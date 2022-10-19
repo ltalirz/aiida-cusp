@@ -36,7 +36,7 @@ def test_vasp_run_line(vasp_code, procs, procs_per_machine, extraparams,
         },
     }
     Base = CalculationBase(inputs=inputs)
-    expected_runline = expected + [vasp_code.get_execname()]
+    expected_runline = expected + [str(vasp_code.get_executable())]
     assert Base.vasp_run_line() == expected_runline
 
 
@@ -54,7 +54,7 @@ def test_vasp_run_line_no_mpi(vasp_code):
         },
     }
     Base = CalculationBase(inputs=inputs)
-    assert Base.vasp_run_line() == [vasp_code.get_execname()]
+    assert Base.vasp_run_line() == [str(vasp_code.get_executable())]
 
 
 @pytest.mark.parametrize('filename', ['MyFile', '.Hidden'])

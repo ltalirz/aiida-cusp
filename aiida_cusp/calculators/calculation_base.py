@@ -192,7 +192,7 @@ class CalculationBase(CalcJob):
         """
         # build the list of command line arguments forming the final
         # runline command
-        vasp_exec = [self.inputs.code.get_execname()]
+        vasp_exec = [str(self.inputs.code.get_executable())]
         if self.inputs.metadata.options.withmpi:
             mpicmd, mpiextra = self.vasp_calc_mpi_args()
             vasp_cmdline_params = mpicmd + mpiextra + vasp_exec
